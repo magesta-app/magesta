@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="res/images/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="src/customizes.css">
+        <link rel="stylesheet" href="src/styles.css">
+        <script src="src/jquery.js"></script>
+        <title></title>
+    </head>
+    <body class="bg-slate-50 overflow-y-auto flex flex-col items-center">
+
+        <div class="w-screen h-full flex bg-white transition-[opacity_ease_in_out] flex-col items-center justify-center relative duration-300" id="loading-page">
+            <img src="res/images/logo.png" class="w-52 aspect-square object-contain object-center">
+            <p class="text-sm absolute bottom-12 text-slate-500">Versi 1.0</p>
+        </div>
+
+        <div class="p-4 w-screen h-full bg-slate-50 hidden opacity-0 items-center justify-center transition-[opacity_ease_in_out] duration-300" id="login-page">
+            <div class="flex flex-col gap-4 w-[clamp(350px,80%,400px)]">
+                <div class="flex flex-row items-center justify-between w-full">
+                    <p class="font-semibold text-slate-800 text-2xl tracking-wide">Masuk</p>
+                    <p class="fas fa-circle-question text-2xl text-[#418A94] hover:text-[#4A9DA8] focus:text-[#56B2BF]"></p>
+                </div>
+                <div class="flex flex-col gap-2 mt-4">
+                    <p>Alamat email</p>
+                    <input type="text" class="w-full h-12 bg-slate-100 p-4 transition-colors border-[#418A94] focus:border-[#418A94] placeholder-shown:border-transparent" placeholder="Masukkan email anda">
+                </div>                
+                <div class="flex flex-col gap-2 relative">
+                    <p>Kata sandi</p>
+                    <input type="password" class="w-full h-12 bg-slate-100 p-4 transition-colors border-[#418A94] focus:border-[#418A94] placeholder-shown:border-transparent" placeholder="Masukkan kata sandi anda" id="password">
+                    <span class="w-12 h-12 grid place-items-center absolute right-0 fas fa-eye bottom-0 text-slate-600 cursor-pointer" id="toggle-show-pass"></span>
+                </div>
+                <a href="#" class="text-[#418A94] text-sm text-left hover:underline">Lupa kata sandi?</a>
+                <button class="h-12 w-full bg-[#418A94] text-white mt-4 transition-colors hover:bg-[#4A9DA8] focus:bg-[#56B2BF]" id="login-btn">Masuk</button>
+                <div class="flex flex-row items-center justify-center gap-4 mt-4">
+                    <hr class="w-10 border-slate-800">
+                    <span class="text-slate-800 font-semibold">atau</span>
+                    <hr class="w-10 border-slate-800">
+                </div>
+                <p class="text-center">Masuk dengan</p>
+                <div class="flex flex-row items-center justify-center gap-10 mt-4">
+                    <a href="#" class="flex flex-col gap-4 items-center justify-center text-center">
+                        <p class="text-xl rounded-full aspect-square w-12 bg-[#418A94] hover:bg-[#4A9DA8] focus:bg-[#56B2BF] transition-colors text-white fas fa-phone grid place-items-center"></p>
+                        <p class="text-sm">Telepon</p>
+                    </a>
+                    <a href="#" class="flex flex-col gap-4 items-center justify-center text-center">
+                        <p class="text-xl rounded-full aspect-square w-12 bg-[#418A94] hover:bg-[#4A9DA8] focus:bg-[#56B2BF] transition-colors text-white fas fa-envelope grid place-items-center"></p>
+                        <p class="text-sm">Email</p>
+                    </a>
+                    <a href="#" class="flex flex-col gap-4 items-center justify-center text-center">
+                        <p class="text-xl rounded-full aspect-square w-12 bg-[#418A94] hover:bg-[#4A9DA8] focus:bg-[#56B2BF] transition-colors text-white fas fas fa-ellipsis-h grid place-items-center"></p>
+                        <p class="text-sm">Lainnya</p>
+                    </a>
+                </div>
+                <p class="flex flex-row items-center justify-center mt-4 text-center text-sm">Belum punya akun?&nbsp;<a href="#" class="text-[#418A94] hover:underline">Daftar</a></p>
+            </div>
+        </div>
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_250px_1fr] duration-300" id="dashboard-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">HALJATAV</p>
+                <div></div>
+            </div>
+            <div class="bg-[#418A94] flex flex-row items-center justify-center overflow-hidden relative" id="header-image-slider">
+                <img src="res/images/panglipur.jpg" class="w-full h-full object-cover object-center slides opacity-transition absolute">
+                <img src="res/images/plataranhotel.jpg" class="w-full h-full object-cover object-center slides opacity-transition opacity-0 absolute">
+                <img src="res/images/sukomakmur.jpg" class="w-full h-full object-cover object-center slides opacity-transition opacity-0 absolute">
+                <img src="res/images/stroberi.jpg" class="w-full h-full object-cover object-center slides opacity-transition opacity-0 absolute">
+            </div>
+            <div class="relative flex flex-col">
+                <div class="absolute top-[-1.75rem] right-1/2 translate-x-1/2">
+                    <input type="text" class="bg-slate-100 h-14 w-max shadow-md p-4 pl-14" placeholder="Lagi pengin wisata kemana?">
+                    <span class="fas fa-magnifying-glass w-14 h-14 absolute left-0 top-0 grid place-items-center text-slate-400"></span>
+                </div>
+                <div class="grid grid-cols-[repeat(2,110px)] grid-rows-3 gap-6 p-6 w-full h-full pt-14 justify-evenly">
+                    <a href="#" id="vacation-btn" class="bg-[url(../res/images/wisata.png)] aspect-square bg-[#418A94]  bg-center bg-contain rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Destinasi Wisata</p>
+                    </a>
+                    <a href="#" id="homestay-btn" class="bg-[url(../res/images/hotel.png)] aspect-square bg-[#418A94]  bg-center bg-contain rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Penginapan</p>
+                    </a>
+                    <a href="#" id="souvenir-btn" class="bg-[url(../res/images/gift.png)] aspect-square bg-[#418A94]  bg-center bg-contain rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Buah Tangan</p>
+                    </a>
+                    <a href="#" id="culture-btn" class="bg-[url(../res/images/culture.png)] aspect-square bg-[#418A94]  bg-center bg-contain rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Festival Budaya</p>                        
+                    </a>
+                    <a href="#" id="worshipplace-btn" class="bg-[url(../res/images/mosque.png)] aspect-square bg-[#418A94]  bg-center bg-contain rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Tempat Ibadah</p>
+                    </a>
+                    <a href="#" id="profile-btn" class="bg-[url(../res/images/profile.png)] aspect-square bg-[#418A94]  bg-center bg-cover rounded-lg bg-no-repeat relative transition-opacity hover:opacity-80">
+                        <p class="absolute bottom-[-2rem] right-1/2 translate-x-1/2 whitespace-nowrap">Profil</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(3,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2 ">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-agrowisata-vacation-page">Agrowisata</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-nature-vacation-page">Alam</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-souvenir-vacation-page">Belanja</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-culture-vacation-page">Budaya</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-education-vacation-page">Edukasi</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-culinary-vacation-page">Kuliner</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-religi-vacation-page">Religi</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-history-vacation-page">Sejarah</a>
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white" id="btn-to-ziarah-vacation-page">Ziarah</a>
+                </div>
+                <div class="flex flex-col mt-4">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Populer</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-56 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full aspect-video bg-slate-500 w-[80%] border-none flex flex-col items-center justify-between overflow-hidden relative rounded-md ">
+                            <img src="res/images/sukomakmur.jpg" class="w-full h-full absolute rounded-lg brightness-75">
+                            <p class="bg-slate-200 z-10 p-2 mt-4 px-10 rounded-full">Agrowisata</p>
+                            <p class="bg-[#ffffff25] backdrop-blur-md z-10 p-2 mb-4 w-[90%] rounded-full text-white text-xs text-center">Wisata negeri sayur<br>Desa Sukomakmur</p>
+                        </a>
+                        <a href="#" class="shrink-0 h-full aspect-video bg-slate-500 w-[80%] border-none flex flex-col items-center justify-between overflow-hidden relative rounded-md ">
+                            <img src="res/images/masjiddemak.jpg" class="w-full h-full absolute rounded-lg brightness-75">
+                            <p class="bg-slate-200 z-10 p-2 mt-4 px-10 rounded-full">Religi</p>
+                            <p class="bg-[#ffffff25] backdrop-blur-md z-10 p-2 mb-4 w-[90%] rounded-full text-white text-xs text-center">Wisata religi & ziarah<br>Masjid Agung</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-4">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Terdekat</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-56 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full aspect-video bg-slate-500 w-[80%] border-none flex flex-col items-center justify-between overflow-hidden relative rounded-md ">
+                            <img src="res/images/curugs.jpg" class="w-full h-full absolute rounded-lg brightness-75">
+                            <p class="bg-slate-200 z-10 p-2 mt-4 px-10 rounded-full">Alam</p>
+                            <p class="bg-[#ffffff25] backdrop-blur-md z-10 p-2 mb-4 w-[90%] rounded-full text-white text-xs text-center">Wisata air terjun Kahyangan<br>Magelang</p>
+                        </a>
+                        <a href="#" class="shrink-0 h-full aspect-video bg-slate-500 w-[80%] border-none flex flex-col items-center justify-between overflow-hidden relative rounded-md ">
+                            <img src="res/images/museumdiponegoro.jpg" class="w-full h-full absolute rounded-lg brightness-75">
+                            <p class="bg-slate-200 z-10 p-2 mt-4 px-10 rounded-full">Sejarah</p>
+                            <p class="bg-[#ffffff25] backdrop-blur-md z-10 p-2 mb-4 w-[90%] rounded-full text-white text-xs text-center">Museum Diponegero<br>Magelang</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-agrowisata-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Agrowisata</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">                    
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/stroberi.jpg" class="w-full h-full object-center object-cover" id="to-agrowisata-vacation-info">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Agrowisata kebun stroberi</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/sukomakmur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Wisata negeri sayur Sukomakmur</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/dragon_fruit.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Agrowisata buah naga merah</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/kelengkeng.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Agrowisata kebun kelengkeng</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/ghaisan.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Ghaisan farm</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/sayur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kebun sayur organik</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-nature-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Alam</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/kahyangan.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Wisata air terjun Kahyangan</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/nepalvanjava.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Nepal Van Java</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/silancur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Silancur Highland</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/pine.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Hutan pinus Kragilan</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/andong.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Mount Andong</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/telomoyo.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Telomoyo</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-shopping-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Belanja</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/rejowinangun.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Pasar Rejowinangun</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/kebonpolo.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Pasar Kebonpolo</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/beringharjo.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Pasar Beringharjo</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/pasargede.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Pasar Gedhe</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/malioboro.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Malioboro</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/pasargotong.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Pasar Gotong Royong</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-culture-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Budaya</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/borobudur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Candi Borobudur</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/baduyhouse.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Desa wisata Saba suku Baduy</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/waerebo.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kampung adat Wae Rebo</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/lompatbatu.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Desa adat Bawomataluo</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/panglipur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Desa Panglipuran</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/ratenggaro.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Desa adat Ratenggaro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="opacity-0 hidden w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-education-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Edukasi</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/kupu.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Taman kupu-kupu</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/nakulasadewa.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Taman Nakula Sadewa</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/dolanan.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Dolanan Nusantara</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/yailanggeng.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Taman Kyai Langgeng</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/reptil.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Taman Reptil Borobudur</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/tamanpintar.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Taman Pintar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="opacity-0 hidden w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-culinary-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Kuliner</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/yantonasgor.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kuliner Tuguran</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/tuinjava.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kulinear Tuin Van Java</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/yantonasgor.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kuliner Nasi Goreng Pak Yanto</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/armadaestate.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kuliner Armada Estate</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/1jtbunga.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kuliner Sejuta Bunga</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/miejendral.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kuliner Jendralan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="opacity-0 hidden w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-religi-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Religi</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/masjiddemak.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Masjid Agung Demak</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/church3.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Gereja St. Ignatius</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/vihara2.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Vihara mendut</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/kelenteng1.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Kelenteng Liong Hok Bio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-history-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Sejarah</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/museumsoedirman.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Museum Jendral Soedirman</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/museumdiponegoro.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Museum Diponegoro</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/pawon.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Candi Pawon</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/museumwayang.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Museum Wayang</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/karmawbhingga.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Museum karmawbhangga</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/mendur.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Candi Mendut</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-ziarah-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(2,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Ziarah</a>
+                </div>
+                <div class="grid grid-cols-[repeat(2,.5fr)] gap-4 mt-4">
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/pamijahan.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Makam dan Gua Pamijahan</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/masjiddemak.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Masjid Agung Demak</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/makamsunanbonang.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Makam Sunan Bonang</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/makamsunangunungjati.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Sunan Gunung Jati</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/setonogedongkediri.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Setono Gedong Kediri</p>
+                    </div>
+                    <div class="aspect-square rounded-lg border-4 border-[#418A94] relative flex-col flex mb-12">
+                        <img src="res/images/makamkadalingu.jpg" class="w-full h-full object-center object-cover">
+                        <p class="text-sm absolute -bottom-12 self-center text-center h-10">Candi Mendut</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-agrowisata-info-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 flex flex-col gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Agrowisata</a>
+                </div>
+                <div class="flex flex-col gap-4 mt-4">
+                    <div class="min-h-32 rounded-lg border-4 border-[#418A94] flex-col flex shrink-0">
+                        <img src="res/images/stroberi.jpg" class="w-full h-full object-center object-cover">
+                    </div>
+                    <p class="self-center text-center font-semibold shrink-0">Agrowisata kebun Stroberi</p>
+                    <fieldset class="shrink-0">
+                        <legend class="font-semibold">Deskripsi</legend>
+                        <p class="text-sm text-justify">Kebun Stroberi ini memiliki luas 1 hektar yang berada di kaki Gunung Merbabu diketinggian 1000 mdpl. Lokasi desa wisata ini... <a href="" class="text-[#418A94] underline italic text-sm">Selengkapnya</a></p>
+                    </fieldset>
+                    <fieldset class="shrink-0">
+                        <legend class="w-full font-semibold flex flex-row items-center justify-between">
+                            <p>Harga tiket masuk</p>
+                            <a href="#" class="font-normal text-sm text-[#418A94] underline" id="to-buy-tiket-agrowisata">Beli tiket</a>
+                        </legend>
+                        <ul class="ml-5">
+                            <li class="text-sm list-disc">Tiket masuk Rp 15.000/Orang</li>
+                            <li class="text-sm list-disc">Parkir motor Rp 2.000/Orang</li>
+                            <li class="text-sm list-disc">Parkir mobil Rp 5.000/Orang</li>
+                        </ul>
+                    </fieldset>
+                    <fieldset class="shrink-0">
+                        <legend class="font-semibold">Aturan</legend>
+                        <ul class="ml-5">
+                            <li class="text-sm list-disc">Dilarang memetik buah yang masih mentah</li>
+                            <li class="text-sm list-disc">Dilarang membawa pulang stroberi</li>
+                            <li class="text-sm list-disc">Dilarang membawa makanan dan minuman dari luar</li>
+                            <li class="text-sm list-disc">Memetik stroberi secukupnya</li>
+                        </ul>
+                    </fieldset>
+                    <fieldset class="shrink-0 flex-col flex gap-2">
+                        <legend class="font-semibold">Lokasi</legend>
+                        <p class="text-sm">Jalan Bahagia Nomor 100, Desa Banyuroto, Sawangan, Magelang</p>
+                        <div class="min-h-32 rounded-lg border-4 border-[#418A94] flex-col flex">
+                            <img src="res/images/map.jpg" class="w-full h-full object-center object-cover">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-agrowisata-buyticket-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">DESTINASI WISATA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 flex flex-col gap-4 relative">
+                <a href="" class="w-full h-12 absolute rounded-none left-0 top-0 bg-[#418A94] flex flex-row items-center justify-center">
+                    <p class="text-white fas fa-chevron-left left-6 absolute"></p>
+                    <p class="text-white">Wisata negeri sayur Sukomakmurp</p>
+                </a>
+                <div class="flex flex-col gap-4 mt-12">
+                    <div class="min-h-32 rounded-lg border-4 border-[#418A94] flex-col flex shrink-0">
+                        <img src="res/images/sukomakmur.jpg" class="w-full h-full object-center object-cover">
+                    </div>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white">
+                        <p class="fas fa-calendar-days mx-4"></p>
+                        <p>20 September 2023</p>
+                    </button>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white relative">
+                        <p class="fas fa-user-group mx-4"></p>
+                        <p>Jumlah orang</p>
+                        <div class="absolute right-4 flex flex-row items-center justify-center gap-4">
+                            <p class="fas fa-minus"></p>
+                            <p>1</p>
+                            <p class="fas fa-plus"></p>
+                        </div>
+                    </button>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white relative">
+                        <p class="fas fa-motorcycle mx-4"></p>
+                        <p>Sewa kendaraan keliling wisata</p>
+                        <div class="absolute right-4 flex flex-row items-center justify-center gap-4">
+                            <p class="fas fa-chevron-down"></p>
+                        </div>
+                    </button>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white">
+                        <p class="fas fa-diamond-turn-right mx-4"></p>
+                        <p>Pemandu wisata</p>
+                    </button>
+                    <div class="h-full">
+
+                    </div>
+                    <button class="flex flex-row items-center justify-center bg-[#418A94] min-h-12 w-full text-white">
+                        Bayar sekarang
+                    </button>                
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden w-screen md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="homestay-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md min-h-[72px]">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">PENGINAPAN</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(3,max-content)] gap-4">
+                <div class="flex flex-col gap-4 items-center">
+                    <div class="p-4 h-max rounded-lg w-full flex flex-col gap-4 bg-[#418A94] text-white">
+                        <p class="text-semibold text-center">Putri Asri Hotel & Resort Magelang</p>
+                        <div class="grid grid-cols-2 grid-rows-[250px] gap-4">
+                            <img src="res/images/asrihotel.jpg" class="h-full w-full rounded-md object-cover object-top">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Harga : </p>
+                                    <p class="text-xs whitespace-nowrap">Rp 250.000/hari</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Rating : </p>
+                                    <div class="flex flex-row items-center gap-2 justify-start">
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Lokasi : </p>
+                                    <p class="text-xs">Jalan kumbang mawar No.100 Magelang</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Fasilitas : </p>
+                                    <p class="text-xs">Double ranjang, Wifi</p>
+                                </div>
+                                <div class="h-full"></div>
+                                <div class="flex flex-col gap-2 justify-between">
+                                    <a href="#" class="text-sm text-white mb-1 text-left rounded-md underline">Lihat selengkapnya</a>
+                                    <a href="#" class="text-sm text-[#418A94] p-2 w-full text-center rounded-md bg-white">Pesan sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 h-max rounded-lg w-full flex flex-col gap-4 bg-[#418A94] text-white">
+                        <p class="text-semibold text-center">Amata Borobudur Resort</p>
+                        <div class="grid grid-cols-2 grid-rows-[250px] gap-4">
+                            <img src="res/images/amatahotel.jpg" class="h-full w-full rounded-md object-cover object-top">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Harga : </p>
+                                    <p class="text-xs whitespace-nowrap">Rp 200.000/hari</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Rating : </p>
+                                    <div class="flex flex-row items-center gap-2 justify-start">
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Lokasi : </p>
+                                    <p class="text-xs">Jalan kenari putih, mertoyudan, magelang</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Fasilitas : </p>
+                                    <p class="text-xs">Double ranjang, Wifi, kolam renang</p>
+                                </div>
+                                <div class="h-full"></div>
+                                <div class="flex flex-col gap-2 justify-between">
+                                    <a href="#" class="text-sm text-white mb-1 text-left rounded-md underline">Lihat selengkapnya</a>
+                                    <a href="#" class="text-sm text-[#418A94] p-2 w-full text-center rounded-md bg-white">Pesan sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 h-max rounded-lg w-full flex flex-col gap-4 bg-[#418A94] text-white">
+                        <p class="text-semibold text-center">Sarasvati Borobudur Hotel</p>
+                        <div class="grid grid-cols-2 grid-rows-[250px] gap-4">
+                            <img src="res/images/sarasvatihotel.jpg" class="h-full w-full rounded-md object-cover object-top">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Harga : </p>
+                                    <p class="text-xs whitespace-nowrap">Rp 250.000/hari</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Rating : </p>
+                                    <div class="flex flex-row items-center gap-2 justify-start">
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                        <p class="fas fa-star text-xs text-amber-400"></p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Lokasi : </p>
+                                    <p class="text-xs">Jalan Cempaka Raya No. 11 Borobudur, Magelang</p>
+                                </div>
+                                <div class="flex flex-row gap-2 justify-start">
+                                    <p class="text-xs whitespace-nowrap">Fasilitas : </p>
+                                    <p class="text-xs">Double ranjang, Wifi, Kolam renang</p>
+                                </div>
+                                <div class="h-full"></div>
+                                <div class="flex flex-col gap-2 justify-between">
+                                    <a href="#" class="text-sm text-white mb-1 text-left rounded-md underline">Lihat selengkapnya</a>
+                                    <a href="#" class="text-sm text-[#418A94] p-2 w-full text-center rounded-md bg-white">Pesan sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-4">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Populer</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-max flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <div class="p-4 h-max rounded-lg w-full flex flex-col gap-4 bg-[#418A94] text-white shrink-0">
+                            <p class="text-semibold text-center">Plataran Borobudur Resort & Spa</p>
+                            <div class="grid grid-cols-2 grid-rows-[250px] gap-4">
+                                <img src="res/images/plataranhotel.jpg" class="h-full w-full rounded-md object-cover object-top">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Harga : </p>
+                                        <p class="text-xs whitespace-nowrap">Rp 250.000/hari</p>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Rating : </p>
+                                        <div class="flex flex-row items-center gap-2 justify-start">
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Lokasi : </p>
+                                        <p class="text-xs">Desa Namu Sialang,Tangkahan, Langkat</p>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Fasilitas : </p>
+                                        <p class="text-xs">Double ranjang, Wifi</p>
+                                    </div>
+                                    <div class="h-full"></div>
+                                    <div class="flex flex-col gap-2 justify-between">
+                                        <a href="#" class="text-sm text-white mb-1 text-left rounded-md underline">Lihat selengkapnya</a>
+                                        <a href="#" class="text-sm text-[#418A94] p-2 w-full text-center rounded-md bg-white">Pesan sekarang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 h-max rounded-lg w-full flex flex-col gap-4 bg-[#418A94] text-white shrink-0">
+                            <p class="text-semibold text-center">Green Forest Tangkahan</p>
+                            <div class="grid grid-cols-2 grid-rows-[250px] gap-4">
+                                <img src="res/images/homestay2.jpg" class="h-full w-full rounded-md object-cover object-top">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Harga : </p>
+                                        <p class="text-xs whitespace-nowrap">Rp 200.000/hari</p>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Rating : </p>
+                                        <div class="flex flex-row items-center gap-2 justify-start">
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                            <p class="fas fa-star text-xs text-amber-400"></p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Lokasi : </p>
+                                        <p class="text-xs">Jalan Kuala Sawit, Desa Namu Sialang, Langkat</p>
+                                    </div>
+                                    <div class="flex flex-row gap-2 justify-start">
+                                        <p class="text-xs whitespace-nowrap">Fasilitas : </p>
+                                        <p class="text-xs">Double ranjang, Wifi, kolam renang</p>
+                                    </div>
+                                    <div class="h-full"></div>
+                                    <div class="flex flex-col gap-2 justify-between">
+                                        <a href="#" class="text-sm text-white mb-1 text-left rounded-md underline">Lihat selengkapnya</a>
+                                        <a href="#" class="text-sm text-[#418A94] p-2 w-full text-center rounded-md bg-white">Pesan sekarang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="vacation-homestay-buy-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">PENGINAPAN</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 flex flex-col gap-4 relative">
+                <a href="" class="w-full h-12 absolute rounded-none left-0 top-0 bg-[#418A94] flex flex-row items-center justify-center">
+                    <p class="text-white fas fa-chevron-left left-6 absolute"></p>
+                    <p class="text-white">Plataran Borobudur Resort</p>
+                </a>
+                <div class="flex flex-col gap-4 mt-12">
+                    <div class="min-h-32 rounded-lg border-4 border-[#418A94] flex-col flex shrink-0">
+                        <img src="res/images/plataranhotel.jpg" class="w-full h-full object-center object-cover">
+                    </div>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white">
+                        <p class="fas fa-calendar-days mx-4"></p>
+                        <p>20 September 2023</p>
+                    </button>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white relative">
+                        <p class="fas fa-house mx-4"></p>
+                        <p>Jenis kamar</p>
+                        <div class="absolute right-4 flex flex-row items-center justify-center gap-4">
+                            <p class="fas fa-chevron-down"></p>
+                        </div>
+                    </button>
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white relative">
+                        <p class="fas fa-user-group mx-4"></p>
+                        <p>Jumlah tamu</p>
+                        <div class="absolute right-4 flex flex-row items-center justify-center gap-4">
+                            <p class="fas fa-minus"></p>
+                            <p>1</p>
+                            <p class="fas fa-plus"></p>
+                        </div>
+                    </button>                    
+                    <button class="flex flex-row items-center justify-start bg-[#418A94] min-h-12 w-full text-white relative">
+                        <p class="fas fa-bed mx-4"></p>
+                        <p>Jumlah kamar</p>
+                        <div class="absolute right-4 flex flex-row items-center justify-center gap-4">
+                            <p class="fas fa-minus"></p>
+                            <p>1</p>
+                            <p class="fas fa-plus"></p>
+                        </div>
+                    </button>
+                    <div class="h-full">
+
+                    </div>
+                    <button class="flex flex-row items-center justify-center bg-[#418A94] min-h-12 w-full text-white">
+                        Bayar sekarang
+                    </button>                
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="souvenir-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-20">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">BUAH TANGAN</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(4,max-content)] gap-4">
+                <div class="flex flex-col mt-4">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Kuliner</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-48 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/pothil.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/gethuktrio.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-2">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Souvenir</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-48 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/batik.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/souvenir2.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-2">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Pakaian</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-48 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/cloth1.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/cloth2.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-2">
+                    <div class="mb-4 w-full flex flex-row items-center justify-between">
+                        <p class="font-semibold text-[1.1rem]">Terlaris</p>
+                        <a href="#" class="text-sm text-slate-400 hover:text-slate-500 transition-colors hover:underline">Lihat selengkapnya</a>
+                    </div>
+                    <div class="w-full h-48 flex flex-row items-center gap-4 scroll-smooth overflow-hidden overflow-x-auto">
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/cloth2.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                        <a href="#" class="shrink-0 h-full bg-slate-500 w-48 border-none flex flex-col items-center justify-between overflow-hidden rounded-md">
+                            <img src="res/images/souvenir1.jpg" class="w-full h-full rounded-lg brightness-75 object-cover object-center border-[#418A94] border-4 border-solid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="souvenir-info-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">BUAH TANGAN</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 flex flex-col gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">Kuliner</a>
+                </div>
+                <div class="flex flex-col gap-4 mt-4">
+                    <div class="h-48 rounded-lg border-4 border-[#418A94] flex-col flex shrink-0">
+                        <img src="res/images/pothil.jpg" class="w-full h-full object-center object-cover">
+                    </div>
+                    <p class="self-center text-center font-semibold shrink-0">Pothil</p>
+                    <fieldset class="shrink-0">
+                        <legend class="font-semibold">Deskripsi</legend>
+                        <p class="text-sm text-justify">
+                            Pothil merupakan makanan ringan atau jajanan yang biasa dijual di pasar tradisional daerah Salaman, Kabupaten Magelang.
+                            Terbuat dari ketela dan tepung tapioka, memiliki tekstur renyah dan gurih. 
+                            <a href="" class="text-[#418A94] underline italic text-sm">Selengkapnya</a>
+                        </p>
+                    </fieldset>
+                    <fieldset class="shrink-0">
+                        <legend class="w-full font-semibold flex flex-row items-center justify-between">
+                            <p>Sedia</p>
+                        </legend>
+                        <ul class="ml-5">
+                            <li class="text-sm list-disc">Kemasan 1kg </li>
+                            <li class="text-sm list-disc">Kemasan 500gr</li>
+                            <li class="text-sm list-disc">Kemasan 250gr</li>
+                        </ul> 
+                    </fieldset>
+                    <fieldset class="shrink-0 flex flex-col gap-2">
+                        <legend class="font-semibold mb-2 w-full flex flex-row items-center justify-between">
+                            <p>Rekomendasi toko</p>
+                            <a href="" class="underline italic text-sm text-[#418A94] font-normal">Selengkapnya</a>
+                        </legend>
+                        <div class="grid grid-cols-3 gap-4 h-32 overflow-hidden">
+                            <a class="h-full border-solid border-4 border-[#418A94] shrink-0">
+                                <img src="res/images/toko1.jpg" class="object-center object-cover h-full">
+                            </a>
+                            <a class="h-full border-solid border-4 border-[#418A94] shrink-0">
+                                <img src="res/images/toko2.jpg" class="object-center object-cover h-full">
+                            </a>
+                            <a class="h-full border-solid border-4 border-[#418A94] shrink-0">
+                                <img src="res/images/toko3.jpg" class="object-center object-cover h-full">
+                            </a>
+                        </div>
+                    </fieldset>
+                    <fieldset class="shrink-0 flex-col flex gap-2">
+                        <legend class="font-semibold">Lokasi</legend>
+                        <p class="text-sm">Jalan Bahagia Nomor 100, Desa Banyuroto, Sawangan, Magelang</p>
+                        <div class="min-h-32 rounded-lg border-4 border-[#418A94] flex-col flex">
+                            <img src="res/images/map.jpg" class="w-full h-full object-center object-cover">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="souvenir-payment-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-10">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">BUAH TANGAN</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 flex flex-col gap-4">
+                <div class="flex flex-col gap-4 items-center mt-2">
+                    <a href="#" class="h-14 rounded-full w-full grid place-items-center bg-[#418A94] text-white">PILIH METODE PEMBAYARAN</a>
+                </div>
+                <div class="flex flex-col gap-4 mt-4">
+                    <div class="h-48 rounded-lg border-4 border-[#418A94] flex-col flex shrink-0">
+                        <img src="res/images/pothil.jpg" class="w-full h-full object-center object-cover">
+                    </div>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-start text-white bg-[#418A94]">
+                        <p class="fas fa-bag-shopping mx-4"></p>
+                        <p>COD</p>
+                    </button>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-start text-white bg-[#418A94]">
+                        <p class="fas fa-money-bill mx-4"></p>
+                        <p>Transfer bank</p>
+                    </button>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-start text-white bg-[#418A94]">
+                        <img src="res/images/bri.png" class="w-5 h-5 object-contain object-center mx-4">
+                        <p>Bank BRI</p>
+                    </button>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-start text-white bg-[#418A94]">
+                        <img src="res/images/mandiri.png" class="w-5 h-5 object-contain object-center mx-4">
+                        <p>Bank Mandiri</p>
+                    </button>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-start text-white bg-[#418A94]">
+                        <img src="res/images/bni.png" class="w-5 h-5 object-contain object-center mx-4">
+                        <p>Bank BNI</p>
+                    </button>
+                    <div class="h-full w-full"></div>
+                    <button class="min-h-12 w-full flex flex-row items-center justify-center text-white bg-[#418A94]">
+                        <p class="text-center self-center">Bayar sekarang</p>
+                    </button>                    
+                </div>
+            </div>
+        </div>
+
+       <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="worshipplace-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-20">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">TEMPAT IBADAH</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-2 grid-rows-[repeat(3,200px)] gap-4 justify-center">
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Masjid</p>
+                    <img src="res/images/mosque1.png" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Klenteng</p>
+                    <img src="res/images/klenteng.png" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Vihara</p>
+                    <img src="res/images/vihara.png" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Pura</p>
+                    <img src="res/images/pura.PNG" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Gereja Katolik</p>
+                    <img src="res/images/church1.png" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-full border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">Gereja Protestan</p>
+                    <img src="res/images/church2.png" class="w-full h-32 rounded-lg brightness-75 object-cover object-center shadow">
+                </a>
+            </div>
+        </div>
+        
+        <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="culture-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-20">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">FESTIVAL BUDAYA</p>
+                <button class="fas fa-magnifying-glass text-xl text-white"></button>
+            </div>
+            <div class="p-4 grid grid-cols-1 grid-rows-[repeat(3,250xp)] gap-4 justify-center">
+                <a href="#" class="p-4 h-max border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">FESTIVAL KALI</p>
+                    <img src="res/images/kalielo.jpg" class="w-full aspect-video h-full rounded-lg object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-max border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">FESTIVAL JAGAD UMKM</p>
+                    <img src="res/images/jagadumkm.jpg" class="w-full aspect-video h-full rounded-lg object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-max border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">FESTIVAL PASAR RAYA MAGELANG</p>
+                    <img src="res/images/pasarraya.jpg" class="w-full aspect-video h-full rounded-lg object-cover object-center shadow">
+                </a>
+                <a href="#" class="p-4 h-max border-none gap-4 flex flex-col items-center justify-start overflow-hidden rounded-md bg-[#418A94]">
+                    <p class="z-10 text-white rounded-full">FESTIVAL LAMPION BOROBUDUR</p>
+                    <img src="res/images/festival.png" class="w-full aspect-video h-full rounded-lg object-cover object-center shadow">
+                </a>
+            </div>
+        </div>
+        
+       <div class="hidden opacity-0 w-screen pages md:max-w-96 h-full bg-slate-50 transition-[opacity_ease_in_out] grid-cols-1 grid-rows-[72px_1fr] duration-300" id="profile-page">
+            <div class="bg-[#418A94] flex flex-row items-center justify-between px-6 sticky top-0 left-0 shadow-md z-20">
+                <button class="fas fa-bars text-white text-xl to-home"></button>
+                <p class="text-xl text-white font-medium">PROFIL</p>
+                <div></div>
+            </div>
+            <div class="p-4 flex flex-col gap-4 items-center my-4">
+                <img src="res/images/avatar.png" class="object-center object-cover w-48 aspect-square rounded-full">
+                <div class="text-center mb-2">
+                    <p class="text-4xl">Afandi</p>
+                    <p>afandi@gmail.com</p>
+                </div>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5">Ubah profil</a>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5">Ubah kata sandi</a>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5">Chat admin</a>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5 text-center">Hubungkan rekening bank <br>atau E-wallet</a>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5">Daftar mitra</a>
+                <a href="#" class="bg-[#418A94] rounded-md h-16 text-white grid place-items-center w-4/5">Keluar</a>
+            </div>
+        </div>
+    </body>
+    <script src="src/script.js"></script>
+</html> 
